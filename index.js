@@ -5,7 +5,7 @@ import { mongoose } from 'mongoose';
 import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const port = 3000;
+// const port = 3000;
 const app = express();
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -175,6 +175,11 @@ app.get('/:customListName', async function (req, res) {
     }
 });
 
+let port = process.env.PORT;
+if (port == null || port == '') {
+    port = 3000;
+}
+
 app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
+    console.log(`Listening on port 3000`);
 });
